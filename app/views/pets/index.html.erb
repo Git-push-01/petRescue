@@ -15,7 +15,7 @@
     </tr>
   </thead>
 
-
+<%= button_to "logout", destroy_user_session_path, method: :delete  %>
     <% @pets.each do |pet| %>
 
         <%= pet.name %>
@@ -24,8 +24,11 @@
         <%= pet.bio %>
         <%=image_tag pet.image %>
         <%= link_to 'Show', pet %>
+        <% if (current_user.present? && (current_user.id == pet.user_id)) %>
         <%= link_to 'Edit', edit_pet_path(pet) %>
         <%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        
 
 
     <% end %>

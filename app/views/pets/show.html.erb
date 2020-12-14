@@ -24,5 +24,8 @@
   <strong>Image:</strong>
   <%= image_tag(@pet.image) %>
 </p>
+<% if (current_user.present? && (current_user.id == @pet.user_id)) %>
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
+  <% end %>
 <%= link_to 'Back', pets_path %>
+<%= button_to "logout", destroy_user_session_path, method: :delete  %>

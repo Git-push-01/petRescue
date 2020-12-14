@@ -1,5 +1,7 @@
 <h1>New Pet</h1>
 
 <%= render 'form', pet: @pet %>
-
 <%= link_to 'Back', pets_path %>
+<% if (user_signed_in?)  %>
+<%= button_to "logout", destroy_user_session_path, method: :delete  %>
+<% end %>
